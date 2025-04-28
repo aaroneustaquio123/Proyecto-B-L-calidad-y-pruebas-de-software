@@ -1,0 +1,164 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 oct. 2024, 1:31:00 p. m.
+    Author     : Micha
+*/
+
+body {
+    margin: 0;
+    padding: 60px 80px 60px 80px;
+    background-image: url('../assets/barber-background.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 55vh;
+    border-radius: 25px;
+    padding: 40px;
+    margin-right: 0 !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.login-container h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+.message-container {
+    background-color: rgba(128, 64, 64, 0.9);
+    border-radius: 10px;
+    padding: 40px;
+    margin-left: 0 !important;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.message-container img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.btn-custom {
+    background-color: #00a680;
+    color: white;
+}
+
+
+
+/*CSS PANTALLAS ADMIN*/
+.body_admin {
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    border-right: 1px solid #343a40;
+}
+
+.separator {
+    width: 0.5px;
+}
+
+.content {
+    padding-left: 20px;
+}
+
+.system-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+.nav-item img {
+    cursor: pointer;
+}
+
+.btn-danger {
+    font-size: 16px;
+    padding: 8px 16px;
+}
+
+.expandable {
+    cursor: pointer;
+}
+
+.collapse td {
+    background-color: #f1f1f1;
+}
+
+
+
+/* Menu Administrador 2 */
+.sidebar {
+    height: 100vh;
+    background-color: #343a40;
+    padding: 20px;
+}
+
+.sidebar .nav-link {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+
+.sidebar img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.filters .form-select {
+    margin-right: 10px;
+}
+
+.table tbody tr.bg-warning {
+    background-color: #ffeeba;
+}
+
+.table tbody tr.bg-light {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr.bg-danger {
+    background-color: #dc3545;
+}
+
+.table tbody tr.bg-success {
+    background-color: #28a745;
+}
+
+.table tbody tr.bg-success.text-white {
+    color: white;
+}
+
+button.btn-sm {
+    margin-left: 10px;
+}

@@ -1,0 +1,102 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 oct. 2024, 12:27:10 p. m.
+    Author     : Micha
+*/
+body {
+    margin: 0;
+    padding: 60px 80px 60px 80px;
+    background-image: url('../assets/pagina_principal.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.caja_principal{
+    width: 80%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.caja_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    overflow: hidden;
+}
+.caja_logo{
+   overflow: hidden;
+   object-fit: contain;
+}
+.img_logo{
+    padding: 10px;
+    border-radius: 12px;
+}
+.caja_redes{
+    height:300px;
+}
+
+
+.logo {
+    max-width: 100%; 
+    height: auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.custom-button {
+    width: 150px;
+    margin-bottom: 10px;
+    background-color: #343a40; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.bloque_1{ 
+    border-radius: 12px; 
+    width: 80%;
+    height: 250px;
+    display: flex;
+    justify-content: space-around;
+                        
+}
+.bloque_2{
+    border-radius: 12px;
+    width: 80%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+
+}
+
+.caja_principal2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   
+}
+
+.caja_img{
+    width: 150px;
+    height: 160px;
+    
+}

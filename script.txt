@@ -1,0 +1,290 @@
+-- Crear la base de datos
+CREATE DATABASE bdBarberia;
+
+-- Usar la base de datos
+USE bdBarberia;
+
+-- Crear la tabla de administradores
+CREATE TABLE Administrador (
+    id INT AUTO_INCREMENT PRIMARY KEY,  
+    usuario VARCHAR(50) NOT NULL,       
+    contrasena VARCHAR(255) NOT NULL    
+);
+
+
+INSERT INTO Administrador (usuario, contrasena)
+VALUES ('admin', 'admin123');
+SELECT * FROM Administrador;
+INSERT INTO Administrador (usuario, contrasena)
+VALUES ('admin2', 'admin1234');
+INSERT INTO Administrador (usuario, contrasena)
+VALUES ('admin3', 'admin12345');
+
+-- --------------------------------------------------------------------------------------
+-- Usar la base de datos (asegúrate de que ya existe)
+USE bdBarberia;
+DROP TABLE IF EXISTS citas;
+-- Crear la tabla citas actualizada
+CREATE TABLE citas (
+    id_cita INT AUTO_INCREMENT PRIMARY KEY, -- ID único de la cita
+    empleado VARCHAR(255) NOT NULL,         -- Nombre del empleado
+    servicio VARCHAR(255) NOT NULL,         -- Tipo de servicio
+    sede VARCHAR(255) NOT NULL,             -- Ubicación de la sede
+    fecha DATE NOT NULL,                    -- Fecha de la cita
+    hora_inicio TIME NOT NULL,              -- Hora de inicio
+    hora_fin TIME NOT NULL,                 -- Hora de finalización
+    cliente_nombre VARCHAR(255) NOT NULL,   -- Nombre del cliente
+    estado ENUM('PENDIENTE', 'VALIDADO', 'CANCELADO') DEFAULT 'PENDIENTE' -- Estado de la cita
+);
+
+-- Insertar datos de ejemplo
+INSERT INTO citas (empleado, servicio, sede, fecha, hora_inicio, hora_fin, cliente_nombre, estado) 
+VALUES 
+('Juan Pérez', 'Corte de Pelo', 'Sede 1', '2024-12-01', '10:00:00', '10:30:00', 'Pablo Mármol', 'PENDIENTE'),
+('María López', 'Afeitado', 'Sede 2', '2024-12-02', '11:00:00', '11:20:00', 'Pedro Picapiedra', 'VALIDADO'),
+('Pedro Ramírez', 'Manicure', 'Sede 3', '2024-12-03', '14:00:00', '14:45:00', 'Bob Esponja', 'CANCELADO');
+
+INSERT INTO citas (empleado, servicio, sede, fecha, hora_inicio, hora_fin, cliente_nombre, estado) VALUES 
+('Pepe', 'Corte de Pelo', 'Sede 1', '2024-12-05', '09:00:00', '09:30:00', 'Ana Torres', 'PENDIENTE'),
+('Pepe', 'Afeitado', 'Sede 2', '2024-12-06', '10:00:00', '10:20:00', 'Carlos Gómez', 'VALIDADO'),
+('Pepe', 'Manicure', 'Sede 1', '2024-12-07', '11:00:00', '11:45:00', 'María Pérez', 'CANCELADO'),
+('Pepe', 'Pedicure', 'Sede 3', '2024-12-08', '14:00:00', '14:45:00', 'Jorge López', 'PENDIENTE'),
+('Pepe', 'Masaje Relajante', 'Sede 2', '2024-12-09', '16:00:00', '16:50:00', 'Luis Hernández', 'PENDIENTE'),
+('Pepe', 'Corte de Pelo', 'Sede 1', '2024-12-10', '09:30:00', '10:00:00', 'Sofía Ramírez', 'VALIDADO'),
+('Pepe', 'Afeitado', 'Sede 3', '2024-12-11', '15:00:00', '15:20:00', 'Pablo Castillo', 'PENDIENTE'),
+('Pepe', 'Manicure', 'Sede 1', '2024-12-12', '10:30:00', '11:15:00', 'Clara Sánchez', 'CANCELADO'),
+('Pepe', 'Pedicure', 'Sede 2', '2024-12-13', '12:00:00', '12:45:00', 'Laura Medina', 'VALIDADO'),
+('Pepe', 'Masaje Relajante', 'Sede 3', '2024-12-14', '17:00:00', '17:50:00', 'Diego Vargas', 'PENDIENTE'),
+
+-- Resto de empleados
+('Juan Pérez', 'Corte de Pelo', 'Sede 2', '2024-12-15', '10:00:00', '10:30:00', 'Andrea Torres', 'VALIDADO'),
+('María López', 'Manicure', 'Sede 1', '2024-12-16', '11:30:00', '12:15:00', 'Pedro Sánchez', 'CANCELADO'),
+('Ana Martínez', 'Pedicure', 'Sede 3', '2024-12-17', '09:00:00', '09:45:00', 'Laura Pérez', 'PENDIENTE'),
+('Carlos Gómez', 'Afeitado', 'Sede 2', '2024-12-18', '08:30:00', '08:50:00', 'Samuel Hernández', 'PENDIENTE'),
+('María López', 'Corte de Pelo', 'Sede 1', '2024-12-19', '14:00:00', '14:30:00', 'Fernando López', 'VALIDADO'),
+('Juan Pérez', 'Masaje Relajante', 'Sede 3', '2024-12-20', '16:00:00', '16:50:00', 'Alicia Torres', 'CANCELADO'),
+('Ana Martínez', 'Manicure', 'Sede 1', '2024-12-21', '13:00:00', '13:45:00', 'David González', 'PENDIENTE'),
+('Carlos Gómez', 'Pedicure', 'Sede 2', '2024-12-22', '15:00:00', '15:45:00', 'Silvia Medina', 'VALIDADO'),
+('Juan Pérez', 'Afeitado', 'Sede 1', '2024-12-23', '09:30:00', '09:50:00', 'Tomás Vargas', 'PENDIENTE'),
+('Ana Martínez', 'Masaje Relajante', 'Sede 3', '2024-12-24', '11:00:00', '11:50:00', 'Gabriela Castillo', 'CANCELADO'),
+
+('Carlos Gómez', 'Corte de Pelo', 'Sede 1', '2024-12-25', '12:00:00', '12:30:00', 'Mario Ramírez', 'VALIDADO'),
+('Juan Pérez', 'Manicure', 'Sede 2', '2024-12-26', '10:00:00', '10:45:00', 'Daniela Vargas', 'PENDIENTE'),
+('Ana Martínez', 'Pedicure', 'Sede 1', '2024-12-27', '14:30:00', '15:15:00', 'Claudia Gómez', 'CANCELADO'),
+('María López', 'Masaje Relajante', 'Sede 3', '2024-12-28', '16:00:00', '16:50:00', 'Enrique Torres', 'VALIDADO'),
+('Carlos Gómez', 'Afeitado', 'Sede 1', '2024-12-29', '09:00:00', '09:20:00', 'Lucas Fernández', 'PENDIENTE'),
+('Juan Pérez', 'Corte de Pelo', 'Sede 2', '2024-12-30', '11:30:00', '12:00:00', 'Paula Castillo', 'VALIDADO'),
+('María López', 'Manicure', 'Sede 3', '2024-12-31', '10:00:00', '10:45:00', 'Santiago Medina', 'CANCELADO'),
+('Ana Martínez', 'Pedicure', 'Sede 1', '2024-12-31', '12:30:00', '13:15:00', 'Isabela Ramírez', 'PENDIENTE'),
+('Carlos Gómez', 'Masaje Relajante', 'Sede 2', '2024-12-31', '15:00:00', '15:50:00', 'Raúl Sánchez', 'VALIDADO');
+
+
+-- Otorgar permisos al usuario
+GRANT ALL PRIVILEGES ON bdBarberia.* TO 'root'@'localhost';
+FLUSH PRIVILEGES;
+
+USE bdBarberia;
+
+SELECT * FROM citas;
+
+DROP TABLE IF EXISTS Usuario;
+
+-- Crear la tabla Usuario
+CREATE TABLE usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,            
+    nombre VARCHAR(50) NOT NULL,                  
+    apellido VARCHAR(50) NOT NULL,               
+    email VARCHAR(100) NOT NULL UNIQUE,         
+    numero CHAR(10),                              
+    contraseña VARCHAR(255) NOT NULL,             
+    genero VARCHAR(255)
+);
+
+drop table usuario;
+-- Insertar un usuario de prueba
+INSERT INTO Usuario (nombre, apellido, email, numero, contraseña, genero)
+VALUES 
+    ('Carlos', 'López', 'carlos.lopez@example.com', '987654321', 'contraseñaSegura', 'Masculino');
+
+-- Consultar los datos insertados
+SELECT * FROM Usuario;
+
+DELETE FROM usuario WHERE id=1;
+
+DROP TABLE usuario;
+
+CREATE TABLE Productos (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY, -- Identificador único para cada producto
+    nombre VARCHAR(100) NOT NULL,              -- Nombre del producto
+    precio DECIMAL(10, 2) NOT NULL,            -- Precio del producto
+    stock INT NOT NULL,                        -- Cantidad en stock
+    sede VARCHAR(50) NOT NULL,                 -- Sede del producto
+    descripcion VARCHAR(255) NOT NULL         -- Descripción del producto (máximo 255 caracteres)
+);
+INSERT INTO Productos (nombre, precio, stock, sede, descripcion) VALUES
+('Tijeras de corte profesional', 25.99, 50, 'Sede A', 'Tijeras de corte de acero inoxidable para corte preciso de cabello'),
+('Máquina de cortar cabello', 45.50, 30, 'Sede B', 'Máquina de corte de pelo eléctrica con varias opciones de longitud'),
+('Cera para peinar', 12.00, 100, 'Sede A', 'Cera moldeadora para dar forma al cabello con acabado mate'),
+('Champú revitalizante', 15.80, 70, 'Sede C', 'Champú para cabellos secos y dañados, con efecto revitalizante'),
+('Acondicionador hidratante', 14.30, 60, 'Sede B', 'Acondicionador para dar suavidad y brillo al cabello'),
+('Gel fijador fuerte', 10.50, 80, 'Sede A', 'Gel fijador de alta duración para mantener el peinado durante todo el día'),
+('Máquina de afeitar eléctrica', 40.00, 40, 'Sede A', 'Máquina de afeitar eléctrica con cabezal ajustable para un afeitado perfecto'),
+('Toallas de barbería', 5.00, 150, 'Sede C', 'Toallas de algodón suaves, ideales para secar el rostro tras el afeitado'),
+('Loción aftershave', 18.50, 90, 'Sede A', 'Loción refrescante para el cuidado de la piel después del afeitado'),
+('Peine de cola', 3.50, 120, 'Sede B', 'Peine de cola de plástico con punta fina para hacer divisiones precisas'),
+('Cepillo de barba', 8.00, 50, 'Sede C', 'Cepillo de cerdas naturales para cuidar la barba y el bigote'),
+('Espuma de afeitar', 6.00, 110, 'Sede B', 'Espuma suave para un afeitado cómodo y sin irritaciones'),
+('Cortaúñas profesional', 7.00, 95, 'Sede A', 'Cortaúñas de alta calidad con diseño ergonómico'),
+('Secador de cabello profesional', 80.00, 25, 'Sede C', 'Secador de alta potencia con tecnología de ionización para cabellos saludables'),
+('Tijeras de entresacar', 28.00, 45, 'Sede A', 'Tijeras especiales para entresacar y dar volumen al cabello'),
+('Rizador de cabello', 35.00, 60, 'Sede B', 'Rizador con placas de cerámica para un rizado suave y duradero'),
+('Cepillo alisador', 40.00, 55, 'Sede C', 'Cepillo eléctrico para alisar el cabello rápidamente'),
+('Spray texturizante', 13.50, 85, 'Sede A', 'Spray para dar textura y volumen al cabello'),
+('Crema de peinar', 9.50, 120, 'Sede B', 'Crema para peinar y controlar el frizz'),
+('Pasta modeladora', 14.00, 70, 'Sede C', 'Pasta modeladora de fuerte fijación para estilos extremos'),
+('Tijeras de corte fino', 32.00, 40, 'Sede A', 'Tijeras profesionales para cortes precisos y detallados'),
+('Pomada para el cabello', 11.00, 100, 'Sede C', 'Pomada para dar brillo y firmeza al peinado'),
+('Cera para barba', 13.00, 85, 'Sede B', 'Cera de alta calidad para moldear y cuidar la barba'),
+('Set de brochas para afeitar', 20.00, 45, 'Sede A', 'Set de brochas de cerda suave para aplicar espuma de afeitar'),
+('Tijeras de peluquero', 30.00, 55, 'Sede B', 'Tijeras de alta precisión para cortes de cabello en salón'),
+('Loción capilar anti-caída', 22.00, 70, 'Sede C', 'Loción para prevenir la caída del cabello y estimular su crecimiento'),
+('Peine de madera', 7.50, 130, 'Sede A', 'Peine de madera natural, ideal para evitar la electricidad estática'),
+('Máquina para cortar barba', 50.00, 50, 'Sede B', 'Máquina profesional para cortar barba con distintos ajustes de longitud'),
+('Mascarilla hidratante para cabello', 18.00, 60, 'Sede C', 'Mascarilla capilar hidratante para cabellos secos y dañados'),
+('Gel para barba', 10.00, 100, 'Sede A', 'Gel de fijación suave para darle forma a la barba sin dejar residuos'),
+('Tijeras de cejas', 12.00, 75, 'Sede B', 'Tijeras pequeñas para dar forma y recortar las cejas con precisión');
+
+CREATE TABLE Proveedor (
+    idProveedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    ruc VARCHAR(20) NOT NULL,
+    telefono VARCHAR(15),
+    direccion VARCHAR(255),
+    descripcion VARCHAR(255)
+);
+
+CREATE TABLE Servicio (
+    idServicio INT AUTO_INCREMENT PRIMARY KEY,
+    nombreservicio VARCHAR(255) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL
+);
+ALTER TABLE Servicio ADD COLUMN cantidadSolicitudes INT DEFAULT 0;
+UPDATE Servicio SET cantidadSolicitudes = FLOOR(1 + (RAND() * 100)) WHERE idServicio <= 10;
+INSERT INTO Servicio (nombreservicio, precio, descripcion) VALUES
+('Corte de cabello masculino', 15.00, 'Corte de cabello clásico o moderno para hombres'),
+('Corte de cabello femenino', 20.00, 'Corte de cabello a la moda para mujeres'),
+('Afeitado con navaja', 18.00, 'Afeitado tradicional con navaja para una experiencia de lujo'),
+('Corte de barba', 10.00, 'Recorte y perfilado de barba para un look perfecto'),
+('Corte de cabello infantil', 12.00, 'Corte de cabello para niños de 3 a 12 años'),
+('Peinado femenino', 25.00, 'Peinado elegante para eventos especiales o rutina diaria'),
+('Peinado masculino', 20.00, 'Peinado estilizado para hombre, perfecto para cualquier ocasión'),
+('Tratamiento capilar hidratante', 30.00, 'Tratamiento para nutrir e hidratar el cabello seco y dañado'),
+('Alisado de cabello', 45.00, 'Alisado de cabello permanente o temporal'),
+('Mechas o balayage', 50.00, 'Aplicación de mechas o balayage para un look fresco y luminoso'),
+('Tinte de cabello', 40.00, 'Cambio de color con tinte de alta calidad'),
+('Corte de puntas', 15.00, 'Recorte de puntas para evitar el quiebre y mantener el cabello saludable'),
+('Tratamiento capilar reparador', 35.00, 'Tratamiento profundo para reparar el daño del cabello por calor o tintes'),
+('Depilación con cera', 10.00, 'Depilación de áreas pequeñas como cejas, labio superior o mentón'),
+('Depilación de piernas', 25.00, 'Depilación completa de piernas con cera para un acabado suave'),
+('Manicure básico', 15.00, 'Corte y cuidado de uñas con esmalte simple'),
+('Manicure en gel', 30.00, 'Manicure con esmalte en gel, resistente y duradero'),
+('Pedicure básico', 20.00, 'Cuidado de pies con corte y limpieza de uñas'),
+('Pedicure en gel', 35.00, 'Pedicure con esmalte en gel para una duración más prolongada'),
+('Barba al estilo "hipster"', 12.00, 'Recorte y perfilado de barba estilo "hipster"'),
+('Corte de cabello y barba', 30.00, 'Corte de cabello acompañado de recorte y arreglo de barba'),
+('Tratamiento al aceite de argán', 40.00, 'Tratamiento revitalizante con aceite de argán para un cabello suave y brillante'),
+('Corte de cabello y peinado', 35.00, 'Corte de cabello acompañado de un peinado estilizado'),
+('Coloración de raíces', 30.00, 'Tinte solo para retocar las raíces del cabello'),
+('Alisado brasileño', 60.00, 'Tratamiento de alisado con keratina para un cabello liso y sin frizz'),
+('Corte de cabello y tratamiento hidratante', 50.00, 'Corte de cabello junto con un tratamiento de hidratación profunda'),
+('Corte de cabello y depilación de cejas', 25.00, 'Corte de cabello combinado con depilación de cejas'),
+('Recorte de barba y bigote', 8.00, 'Recorte y perfilado de barba y bigote con precisión'),
+('Corte y peinado para bodas', 60.00, 'Corte y peinado especial para novias o eventos importantes'),
+('Corte y tratamiento capilar anti caída', 40.00, 'Corte de cabello acompañado de tratamiento para prevenir la caída del cabello'),
+('Corte de cabello y hidratación profunda', 45.00, 'Corte y tratamiento hidratante para mantener el cabello saludable y brillante'),
+('Diseño de cejas', 12.00, 'Moldeo y diseño de cejas con cera o hilo'),
+('Corte de cabello y tinte', 50.00, 'Corte de cabello con aplicación de tinte para un look completamente renovado');
+
+
+DELETE FROM Servicio;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM Servicio;
+SET SQL_SAFE_UPDATES = 1;
+
+
+
+CREATE TABLE Empleado (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    especialidad VARCHAR(100) NOT NULL,
+    telefono VARCHAR(20) NOT NULL
+);
+-- Crear la tabla boletas
+CREATE TABLE boletas (
+    id_boleta INT AUTO_INCREMENT PRIMARY KEY,        -- ID único de la boleta
+    cliente VARCHAR(255) NOT NULL,                    -- Nombre del cliente
+    fecha DATE NOT NULL,                              -- Fecha de la boleta
+    total_bruto DECIMAL(10, 2) NOT NULL,              -- Total bruto de la boleta
+    igv DECIMAL(10, 2) NOT NULL,                     -- IGV (Impuesto General a las Ventas)
+    total_neto DECIMAL(10, 2) NOT NULL,              -- Total neto (total_bruto + igv)
+    metodo_pago ENUM('Efectivo', 'Tarjeta', 'Transferencia') NOT NULL,  -- Método de pago
+    estado ENUM('Pendiente', 'Pagado', 'Anulado') DEFAULT 'Pendiente' -- Estado de la boleta
+);
+
+-- Insertar datos de ejemplo en la tabla boletas
+INSERT INTO boletas (cliente, fecha, total_bruto, igv, total_neto, metodo_pago, estado) 
+VALUES 
+('Carlos López', '2024-12-01', 100.00, 18.00, 118.00, 'Efectivo', 'Pagado'),
+('Pablo Mármol', '2024-12-02', 150.00, 27.00, 177.00, 'Tarjeta', 'Pendiente'),
+('Pedro Picapiedra', '2024-12-03', 200.00, 36.00, 236.00, 'Transferencia', 'Anulado');
+
+INSERT INTO boletas (cliente, fecha, total_bruto, igv, total_neto, metodo_pago, estado) VALUES
+('Juan Pérez', '2024-11-01', 150.00, 27.00, 177.00, 'Efectivo', 'Pagado'),
+('Ana Gómez', '2024-11-02', 200.00, 36.00, 236.00, 'Tarjeta', 'Pendiente'),
+('Carlos Rodríguez', '2024-11-02', 120.00, 21.60, 141.60, 'Transferencia', 'Pagado'),
+('María Fernández', '2024-11-03', 95.00, 17.10, 112.10, 'Efectivo', 'Anulado'),
+('José Martínez', '2024-11-03', 250.00, 45.00, 295.00, 'Tarjeta', 'Pagado'),
+('Laura Pérez', '2024-11-04', 50.00, 9.00, 59.00, 'Transferencia', 'Pendiente'),
+('Luis Sánchez', '2024-11-04', 175.00, 31.50, 206.50, 'Efectivo', 'Pagado'),
+('Sofía Gómez', '2024-11-05', 130.00, 23.40, 153.40, 'Tarjeta', 'Pagado'),
+('Pedro Rodríguez', '2024-11-05', 300.00, 54.00, 354.00, 'Transferencia', 'Pendiente'),
+('Carmen Díaz', '2024-11-06', 220.00, 39.60, 259.60, 'Efectivo', 'Pagado'),
+('Luis Martínez', '2024-11-06', 180.00, 32.40, 212.40, 'Tarjeta', 'Pagado'),
+('Marta González', '2024-11-07', 160.00, 28.80, 188.80, 'Transferencia', 'Pendiente'),
+('Raúl Ramírez', '2024-11-07', 210.00, 37.80, 247.80, 'Efectivo', 'Anulado'),
+('Felipe Hernández', '2024-11-08', 140.00, 25.20, 165.20, 'Tarjeta', 'Pendiente'),
+('Verónica Fernández', '2024-11-08', 120.00, 21.60, 141.60, 'Efectivo', 'Pagado'),
+('Jorge López', '2024-11-09', 90.00, 16.20, 106.20, 'Transferencia', 'Pagado'),
+('Elena Torres', '2024-11-09', 250.00, 45.00, 295.00, 'Efectivo', 'Pagado'),
+('Rafael Ruiz', '2024-11-10', 200.00, 36.00, 236.00, 'Tarjeta', 'Pagado'),
+('Lucía Díaz', '2024-11-10', 175.00, 31.50, 206.50, 'Transferencia', 'Pendiente'),
+('Samuel Romero', '2024-11-11', 110.00, 19.80, 129.80, 'Efectivo', 'Pagado'),
+('Paula Castillo', '2024-11-11', 220.00, 39.60, 259.60, 'Transferencia', 'Pendiente'),
+('Gonzalo Vázquez', '2024-11-12', 270.00, 48.60, 318.60, 'Efectivo', 'Pagado'),
+('Ana Ruiz', '2024-11-12', 150.00, 27.00, 177.00, 'Tarjeta', 'Pagado'),
+('Miguel García', '2024-11-13', 180.00, 32.40, 212.40, 'Transferencia', 'Anulado'),
+('Raquel López', '2024-11-13', 230.00, 41.40, 271.40, 'Efectivo', 'Pagado'),
+('José González', '2024-11-14', 160.00, 28.80, 188.80, 'Tarjeta', 'Pendiente'),
+('Cristina Romero', '2024-11-14', 210.00, 37.80, 247.80, 'Transferencia', 'Pagado'),
+('Pablo Fernández', '2024-11-15', 130.00, 23.40, 153.40, 'Efectivo', 'Pagado'),
+('Mónica Torres', '2024-11-15', 190.00, 34.20, 224.20, 'Tarjeta', 'Pendiente'),
+('Antonio López', '2024-11-16', 220.00, 39.60, 259.60, 'Efectivo', 'Anulado'),
+('Beatriz Sánchez', '2024-11-16', 175.00, 31.50, 206.50, 'Transferencia', 'Pagado');
+
+
+SELECT * FROM boletas;
+SELECT * FROM Usuario;
+SELECT * FROM Empleado;
+SELECT * FROM Servicio;
+SELECT * FROM Proveedor;
+SELECT * FROM Productos;
+SELECT * FROM Administrador;
+SELECT * FROM citas;
+
+USE bdBarberia; 
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+
